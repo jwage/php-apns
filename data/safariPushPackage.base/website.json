@@ -1,0 +1,8 @@
+{
+    "websiteName": "WebsiteName",
+    "websitePushID": "web.com.domain",
+    "allowedDomains": ["http://{{ host }}", "https://{{ host }}"],
+    "urlFormatString": "http://{{ host }}/%@",
+    "authenticationToken": "{{ userId }}",
+    "webServiceURL": "https://{{ host }}/safari_push_notifications/{{ userId }}"
+}

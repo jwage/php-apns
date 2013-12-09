@@ -1,0 +1,19 @@
+{
+    "name": "jwage/php-apns",
+    "type": "library",
+    "description": "Object Oriented PHP Apple Push Notification Integration Library",
+    "keywords": ["apple", "notifications", "apns"],
+    "homepage": "http://github.com/jwage/php-apns",
+    "license": "MIT",
+    "authors": [
+        {"name": "Jonathan H. Wage", "email": "jonwage@gmail.com"}
+    ],
+    "autoload": {
+        "psr-0": {"JWage\\APNS": "src/"}
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "ext-openssl": "*",
+        "ext-zip": "*"
+    }
+}
