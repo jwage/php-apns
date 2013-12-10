@@ -12,9 +12,9 @@ class PackageSigner
      * Creates a package signature using the given certificate and package directory.
      *
      * @param \JWage\APNS\Certificate $certificate
-     * @param string $packageDir
+     * @param \JWage\APNS\Safari\Package $package
      */
-    public function createPackageSignature(Certificate $certificate, $packageDir)
+    public function createPackageSignature(Certificate $certificate, Package $package)
     {
         $pkcs12 = $certificate->getCertificateString();
         $certPassword = $certificate->getPassword();
@@ -25,8 +25,8 @@ class PackageSigner
             throw new RuntimeException('Failed to create signature.');
         }
 
-        $signaturePath = sprintf('%s/signature', $packageDir);
-        $manifestJsonPath = sprintf('%s/manifest.json', $packageDir);
+        $signaturePath = sprintf('%s/signature', $package->getPackageDir());
+        $manifestJsonPath = sprintf('%s/manifest.json', $package->getPackageDir());
 
         // Sign the manifest.json file with the private key from the certificate
         $certData = openssl_x509_read($certs['cert']);

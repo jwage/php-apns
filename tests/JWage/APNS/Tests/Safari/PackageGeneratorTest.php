@@ -79,33 +79,19 @@ class PackageGeneratorTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class PackageStub extends Package
-{
-    protected function createPackageSigner()
-    {
-        return new PackageSignerStub();
-    }
-}
-
 class PackageSignerStub extends PackageSigner
 {
-    public function createPackageSignature(Certificate $certificate, $packageDir)
+    public function createPackageSignature(Certificate $certificate, Package $package)
     {
-        $signaturePath = sprintf('%s/signature', $packageDir);
+        $signaturePath = sprintf('%s/signature', $package->getPackageDir());
         file_put_contents($signaturePath, 'test signature');
     }
 }
 
 class PackageGeneratorStub extends PackageGenerator
 {
-    protected function createPackage($packageDir, $userId)
+    protected function createPackageSigner()
     {
-        return new PackageStub(
-            $this->certificate,
-            $this->basePushPackagePath,
-            $packageDir,
-            $userId,
-            $this->host
-        );
+        return new PackageSignerStub();
     }
 }
