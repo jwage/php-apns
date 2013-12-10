@@ -40,8 +40,8 @@ class SocketClient
      * Construct.
      *
      * @param \JWage\APNS\Certificate $certificate
-     * @param string $apnsHost
-     * @param string $apnsPort
+     * @param string $host
+     * @param string $port
      */
     public function __construct(Certificate $certificate, $host, $port)
     {
@@ -109,7 +109,7 @@ class SocketClient
 
         if (!$client) {
             throw new ErrorException(
-                sprintf('Failed to create stream socket client to "%s". %s', $address, $errorString), $error
+                sprintf('Failed to create stream socket client to "%s". %s', $address, $this->errorString), $this->error
             );
         }
 
