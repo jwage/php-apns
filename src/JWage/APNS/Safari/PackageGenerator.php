@@ -42,7 +42,7 @@ class PackageGenerator
      * Create a safari website push notification package for the given User.
      *
      * @param string $userId User id to create package for.
-     * @return JWage\APNS\Safari\Package $package Package instance.
+     * @return \JWage\APNS\Safari\Package $package Package instance.
      */
     public function createPushPackageForUser($userId)
     {

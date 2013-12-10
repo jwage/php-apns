@@ -13,6 +13,8 @@ class PackageSigner
      *
      * @param \JWage\APNS\Certificate $certificate
      * @param \JWage\APNS\Safari\Package $package
+     *
+     * @return string Path of signature
      */
     public function createPackageSignature(Certificate $certificate, Package $package)
     {
