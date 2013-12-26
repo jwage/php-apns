@@ -6,6 +6,8 @@ use ErrorException;
 
 class SocketClient
 {
+    const PAYLOAD_MAX_BYTES = 256;
+
     /**
      * @var \JWage\APNS\Certificate
      */
@@ -65,6 +67,12 @@ class SocketClient
      */
     public function write($binaryMessage)
     {
+        if (strlen($binaryMessage) > self::PAYLOAD_MAX_BYTES) {
+            throw new \InvalidArgumentException(
+                sprintf('The maximum size allowed for a notification payload is %s bytes; Apple Push Notification Service refuses any notification that exceeds this limit.', self::PAYLOAD_MAX_BYTES)
+            );
+        }
+
         return fwrite($this->getApnsResource(), $binaryMessage);
     }
 
