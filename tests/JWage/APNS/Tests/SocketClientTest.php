@@ -26,6 +26,44 @@ class SocketClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('test', file_get_contents($this->testPath));
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage The maximum size allowed for a notification payload is 256 bytes; Apple Push Notification Service refuses any notification that exceeds this limit.
+     */
+    public function testWriteMaxBytes()
+    {
+        $deviceToken = '97213C2CA2146AF258B098611394FD6943FA730FF65E6797A85D3A0DC713A84C';
+
+        $payload = array(
+            'aps' => array(
+                'alert' => array(
+                    'title' => 'Website',
+                    'body' => 'Jonathan H. Wage joined your website. This is a really long push notification body. So long it probably won\'t work! Not long enough! Perfect!',
+                ),
+                'url-args' => array(
+                    'http://google.com',
+                ),
+            ),
+        );
+
+        $encodedPayload = json_encode($payload);
+
+        $payload = chr(0).
+               chr(0).
+               chr(32).
+               pack('H*', $deviceToken).
+               chr(0).chr(strlen($encodedPayload)).
+               $encodedPayload;
+
+        // write binary string to file
+        $path = sprintf('%s/php_apns_test_write_max_bytes', sys_get_temp_dir());
+        file_put_contents($path, $payload);
+
+        $this->assertEquals(filesize($path), strlen($payload), 'Compare result of filesize() to strlen()');
+
+        $this->socketClient->write($payload);
+    }
+
     public function testCreateStreamContext()
     {
         $streamContext = $this->socketClient->getTestCreateStreamContext();
