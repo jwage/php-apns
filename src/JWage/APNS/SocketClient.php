@@ -106,7 +106,7 @@ class SocketClient
     {
         $address = $this->getSocketAddress();
 
-        $client = stream_socket_client(
+        $client = @stream_socket_client(
             $address,
             $this->error,
             $this->errorString,
