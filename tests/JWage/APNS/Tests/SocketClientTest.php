@@ -36,6 +36,16 @@ class SocketClientTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals('ssl://host:1234', $this->socketClient->getTestSocketAddress());
     }
+
+    /**
+     * @expectedException ErrorException
+     * @expectedExceptionMessage Failed to create stream socket client to "ssl://somethingthatdoesnotexist:100". php_network_getaddresses: getaddrinfo failed: Name or service not known
+     */
+    public function testConnectThrowsException()
+    {
+        $socketClient = new SocketClient($this->certificate, 'somethingthatdoesnotexist', 100);
+        $socketClient->write('test');
+    }
 }
 
 class SocketClientStub extends SocketClient
