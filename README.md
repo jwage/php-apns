@@ -4,6 +4,12 @@ PHP APNS
 PHP Apple Push Notification Service Library
 
 [![Build Status](https://secure.travis-ci.org/jwage/php-apns.png?branch=master)](http://travis-ci.org/jwage/php-apns)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/jwage/php-apns/badges/quality-score.png?s=98f9260f6488ed20d32d21106dc349c1eac26a35)](https://scrutinizer-ci.com/g/jwage/php-apns/)
+[![Code Coverage](https://scrutinizer-ci.com/g/jwage/php-apns/badges/coverage.png?s=cd50bac60d2699353b0d9ffef3b7a1a4f6568f70)](https://scrutinizer-ci.com/g/jwage/php-apns/)
+[![Latest Stable Version](https://poser.pugx.org/jwage/php-apns/v/stable.png)](https://packagist.org/packages/jwage/php-apns)
+[![Total Downloads](https://poser.pugx.org/jwage/php-apns/downloads.png)](https://packagist.org/packages/jwage/php-apns)
+[![Dependency Status](https://www.versioneye.com/php/jwage:php-apns/1.0.0/badge.png)](https://www.versioneye.com/php/jwage:php-apns/1.0.0)
+
 
 ## Install
 
