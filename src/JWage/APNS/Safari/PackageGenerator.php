@@ -4,7 +4,6 @@ namespace JWage\APNS\Safari;
 
 use ErrorException;
 use JWage\APNS\Certificate;
-use RuntimeException;
 use ZipArchive;
 
 class PackageGenerator
@@ -139,6 +138,10 @@ class PackageGenerator
         return new ZipArchive();
     }
 
+    /**
+     * @param string $packageDir
+     * @param string $userId
+     */
     protected function createPackage($packageDir, $userId)
     {
         return new Package($packageDir, $userId);
