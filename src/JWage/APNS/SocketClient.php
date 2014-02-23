@@ -63,7 +63,7 @@ class SocketClient
      * Writes a binary message to apns.
      *
      * @param string $binaryMessage
-     * @return integer|false Returns the number of bytes written, or FALSE on error.
+     * @return integer Returns the number of bytes written, or FALSE on error.
      */
     public function write($binaryMessage)
     {
