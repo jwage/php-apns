@@ -1,6 +1,6 @@
 {
-    "websiteName": "WebsiteName",
-    "websitePushID": "web.com.domain",
+    "websiteName": "{{ websiteName }}",
+    "websitePushID": "{{ websitePushId }}",
     "allowedDomains": ["http://{{ host }}", "https://{{ host }}"],
     "urlFormatString": "http://{{ host }}/%@",
     "authenticationToken": "{{ userId }}",

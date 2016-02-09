@@ -21,7 +21,7 @@ class PackageGeneratorTest extends PHPUnit_Framework_TestCase
 
         $this->certificate = new Certificate('', 'password');
         $this->packageGenerator = new PackageGeneratorStub(
-            $this->certificate, $this->basePushPackagePath, 'host.com'
+            $this->certificate, $this->basePushPackagePath, 'host.com', 'WebsiteName', 'web.com.domain'
         );
     }
 
