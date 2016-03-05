@@ -24,17 +24,36 @@ class PackageGenerator
     protected $host;
 
     /**
+     * @var string
+     */
+    protected $websiteName;
+
+    /**
+     * @var string
+     */
+    protected $websitePushId;
+
+    /**
      * Construct.
      *
      * @param \JWage\APNS\Certificate $certificate
      * @param string $basePushPackagePath
      * @param string $host
+     * @param string $websiteName
+     * @param string $websitePushId
      */
-    public function __construct(Certificate $certificate, $basePushPackagePath, $host)
-    {
+    public function __construct(
+        Certificate $certificate,
+        $basePushPackagePath,
+        $host,
+        $websiteName = '',
+        $websitePushId = ''
+    ) {
         $this->certificate = $certificate;
         $this->basePushPackagePath = $basePushPackagePath;
         $this->host = $host;
+        $this->websiteName = $websiteName;
+        $this->websitePushId = $websitePushId;
     }
 
     /**
@@ -106,6 +125,8 @@ class PackageGenerator
                 $websiteJson = file_get_contents($filePath);
                 $websiteJson = str_replace('{{ userId }}', $package->getUserId(), $websiteJson);
                 $websiteJson = str_replace('{{ host }}', $this->host, $websiteJson);
+                $websiteJson = str_replace('{{ websiteName }}', $this->websiteName, $websiteJson);
+                $websiteJson = str_replace('{{ websitePushId }}', $this->websitePushId, $websiteJson);
                 file_put_contents($filePath, $websiteJson);
             }
         }
